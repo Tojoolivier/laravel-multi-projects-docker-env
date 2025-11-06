@@ -1,0 +1,37 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+    container_name: winkler-php
+    volumes:
+      - ./projects:/var/www
+      - ./docker/php/php-ini-overrides.ini:/etc/php/8.3/fpm/conf.d/99-overrides.ini
+    networks:
+      - winkler-net
+
+  nginx:
+    build:
+      context: ./docker/nginx
+    container_name: winkler-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./projects:/var/www
+    depends_on:
+      - php
+    networks:
+      - winkler-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: winkler-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - winkler-net
+
+networks:
+  winkler-net:
+    driver: bridge

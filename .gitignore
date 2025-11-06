@@ -1,0 +1,42 @@
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.env.local
+
+# MySQL data files
+mysql/data/
+*.ibd
+*.frm
+*.MYD
+*.MYI
+*.sdi
+*.dblwr
+binlog.*
+ibdata*
+ibtmp*
+ib_buffer_pool
+undo_*
+*.sock
+
+# Projects
+
